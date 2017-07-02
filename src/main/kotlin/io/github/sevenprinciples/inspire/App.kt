@@ -22,6 +22,7 @@ import java.util.*
 
 val MATTERMOST_TOKEN = System.getenv("MATTERMOST_TOKEN")
 val BASE_PATH = System.getenv("BASE_PATH")
+val PORT = System.getenv("PORT")
 
 fun getQuotes(path: String): List<String>  {
     val stream = App.javaClass.classLoader.getResourceAsStream(path)
@@ -43,6 +44,8 @@ object App {
     val xmasQuotes = getQuotes("quotes/xmas.txt")
 
     @JvmStatic fun main(args: Array<String>) {
+
+        port(PORT.toInt())
 
         staticFileLocation("/public")
         logger.level = Level.DEBUG
