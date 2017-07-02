@@ -8,6 +8,9 @@ import io.github.vyo.twig.logger.Logger
 import spark.Spark.*
 import java.awt.PageAttributes
 import java.io.File
+import java.io.FileInputStream
+import java.io.FileReader
+import java.io.InputStreamReader
 import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
@@ -21,8 +24,8 @@ val MATTERMOST_TOKEN = System.getenv("MATTERMOST_TOKEN")
 val BASE_PATH = System.getenv("BASE_PATH")
 
 fun getQuotes(path: String): List<String>  {
-    val uri = App.javaClass.classLoader.getResource(path).toURI()
-    return Files.readAllLines(Paths.get(uri), Charsets.UTF_8)
+    val stream = App.javaClass.classLoader.getResourceAsStream(path)
+    return InputStreamReader(stream).readLines()
 }
 
 fun chooseQuote(quotes: List<String>): String {
