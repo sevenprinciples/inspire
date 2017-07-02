@@ -6,6 +6,7 @@ import io.github.vyo.twig.logger.Level
 import io.github.vyo.twig.logger.Logger
 import spark.Spark.*
 import java.io.InputStreamReader
+import java.time.Year
 import java.util.*
 
 /**
@@ -18,7 +19,7 @@ val PORT = System.getenv("PORT")
 
 fun getQuotes(path: String): List<String>  {
     val stream = App.javaClass.classLoader.getResourceAsStream(path)
-    return InputStreamReader(stream).readLines()
+    return InputStreamReader(stream).readLines().map { org.apache.commons.text.StringEscapeUtils.unescapeHtml4(it) }
 }
 
 fun chooseQuote(quotes: List<String>): String {
@@ -67,7 +68,7 @@ object App {
 
             res.type("application/json")
 
-            MattermostPost("${chooseQuote(regularQuotes)}${System.lineSeparator()}![](${Unirest.get("http://inspirobot.me/api?generate=true").asString().body})",
+            MattermostPost("> ${chooseQuote(regularQuotes)}${System.lineSeparator()}~ InspiroBot, ${Year.now().value}${System.lineSeparator()}${System.lineSeparator()}![](${Unirest.get("http://inspirobot.me/api?generate=true").asString().body})",
                     "$BASE_PATH/static/inspirobot.png",
                     "in_channel")
 
