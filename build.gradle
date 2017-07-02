@@ -17,6 +17,10 @@ group 'io.github.sevenprinciples'
 version '0.1.0'
 
 jar {
+
+    baseName = 'inspire'
+    version = version
+
     manifest {
         attributes 'Main-Class': mainClassName
     }
