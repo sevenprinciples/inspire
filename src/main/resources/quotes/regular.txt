@@ -73,7 +73,7 @@ Get your very own InspiroMug&#8482; Click Mug This!
 If you leave, you’ll miss out on some great inspiration.
 That Elon Musk sure says a lot of wacky things.
 A quote a day keeps the unsatisfactory away.
-inspirobotSays2=["My intelligence is growing for every quote.
+My intelligence is growing for every quote.
 Your friends don’t understand you.
 You don't need other people.
 Don’t worry about what the bots are up to.

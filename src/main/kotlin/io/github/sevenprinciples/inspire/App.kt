@@ -68,7 +68,7 @@ object App {
 
             res.type("application/json")
 
-            MattermostPost("> ${chooseQuote(regularQuotes)}${System.lineSeparator()}~ InspiroBot, ${Year.now().value}${System.lineSeparator()}${System.lineSeparator()}![](${Unirest.get("http://inspirobot.me/api?generate=true").asString().body})",
+            MattermostPost("![](${Unirest.get("http://inspirobot.me/api?generate=true").asString().body})${System.lineSeparator()}> ${chooseQuote(regularQuotes)}${System.lineSeparator()}~ [InspiroBot](http://inspirobot.me/), ${Year.now().value}}",
                     "$BASE_PATH/static/inspirobot.png",
                     "in_channel")
 
