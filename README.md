@@ -1,0 +1,2 @@
+# inspire
+Mattermost InspiroBot Integration
