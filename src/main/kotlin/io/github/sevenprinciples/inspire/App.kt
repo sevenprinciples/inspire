@@ -1,19 +1,11 @@
 package io.github.sevenprinciples.inspire
 
-import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.mashape.unirest.http.Unirest
 import io.github.vyo.twig.logger.Level
 import io.github.vyo.twig.logger.Logger
 import spark.Spark.*
-import java.awt.PageAttributes
-import java.io.File
-import java.io.FileInputStream
-import java.io.FileReader
 import java.io.InputStreamReader
-import java.nio.file.Files
-import java.nio.file.Path
-import java.nio.file.Paths
 import java.util.*
 
 /**
@@ -58,7 +50,7 @@ object App {
         before { request, _ -> logger.debug("request: $request") }
         after { _, response -> logger.debug("response: $response") }
 
-        exception(Exception::class.java, { exc, req, res ->
+        exception(Exception::class.java, { exc, _, res ->
 
             if ( exc.message == "forbidden") {
                 res.body("forbidden")
@@ -71,7 +63,7 @@ object App {
 
         })
 
-        post("/api/inspire", { req, res ->
+        post("/api/inspire", { _, res ->
 
             res.type("application/json")
 
