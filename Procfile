@@ -1,0 +1,1 @@
+web: java -jar build/libs/inspire-0.1.0.jar
