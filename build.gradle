@@ -1,0 +1,32 @@
+group 'io.github.sevenprinciples'
+version '0.1.0'
+
+buildscript {
+    ext.kotlin_version = '1.1.1'
+
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+apply plugin: 'kotlin'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile "com.sparkjava:spark-core:2.5"
+    compile "com.google.code.gson:gson:2.7"
+    compile "io.github.vyo:twig:1.1.0:"
+    compile "com.mashape.unirest:unirest-java:1.4.9"
+}
+
+sourceSets {
+    main.java.srcDirs += 'src/main/kotlin'
+}
